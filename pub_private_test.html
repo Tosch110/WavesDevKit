@@ -68,21 +68,49 @@
 	<script src="js/waves.js" type="text/javascript"></script>
     <script src="js/waves.constants.js" type="text/javascript"></script>
     <script src="js/waves.util.js" type="text/javascript"></script>
-    <!--
-    //Transaction Format
-    {
-     "timestamp": 0,
-     "amount":400,
-     "fee":1,
-     "senderPublicKey":"senderPubKey",
-     "recipient":"recipientId",
-     "signature":"sig"
-    }
+    <script>
+        $(document).ready(function() {
 
-    [10:33:47] Petr Pitrov: senderPubKey is Base58 string
-    [10:33:56] Petr Pitrov: sig is Base58 string
+        //The seed is your private identification string
+        Waves.seed = 'PrivateKeyString';
 
-    -->
+        //Enter your address if you have one to retreive current Balance
+        //Will later be replaced with Blake256 - Keccak hashchain in order to retreive address from seed.
+        Waves.address = 'o1y1pkQyXCDWrtNQZ9K4u6KW1RiFZTnJ1';
+
+        var addressBalance = Waves.getAddressesBalance(Waves.address, function (balance) {
+
+            $("#balance").html('Address: '+Waves.address+' with a Balance of: '+Waves.format(balance.balance)+' Waves');
+        });
+        
+
+        //Get seedArrayBytes
+        //var seedArrayBytes = converters.stringToByteArray(Waves.seed);
+        
+        $("#secret").html(Waves.seed);
+
+        var publicKey = Waves.getPublicKey(Waves.seed);
+
+        $("#publicKey").html(publicKey);
+
+        var privateKey = Waves.getPrivateKey(Waves.seed);
+
+        $("#privateKey").html(privateKey);
+
+        //Get last Waves Block
+        $.getJSON(Waves.server+'/blocks/last', function(response) {
+            
+            var thisTime = (response.timestamp / 10000000) + Waves.epoch;
+
+            $('#mydiv').html('Last Waves Block: '+ Waves.formatTimestamp( response.timestamp ));
+
+            
+
+        });
+        
+    });
+
+    </scrip>
 
 </body>
 </html>
