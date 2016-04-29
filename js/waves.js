@@ -5,7 +5,6 @@
  * @depends {3rdparty/big.js}
  * @depends {3rdparty/jsbn.js}
  * @depends {3rdparty/jsbn2.js}
- * @depends {3rdparty/pako.js}
  * @depends {3rdparty/webdb.js}
  * @depends {3rdparty/growl.js}
  * @depends {crypto/curve25519.js}
@@ -21,11 +20,8 @@
  * @depends {crypto/3rdparty/seedrandom.js}
  * @depends {util/converters.js}
  * @depends {util/extensions.js}
- * @depends {util/nxtaddress.js}
  */
 var Waves = (function(Waves, $, undefined) {
-	
-
 	"use strict";
 
     var Waves = [];

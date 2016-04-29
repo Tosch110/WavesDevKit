@@ -216,13 +216,9 @@ var Waves = (function (Waves, $, undefined) {
         "es-US": "M/d/yyyy"
     };
 
-
-
     var LANG = window.navigator.userLanguage || window.navigator.language;
     var LOCALE_DATE_FORMAT = LOCALE_DATE_FORMATS[LANG] || 'dd/MM/yyyy';
 
-
-    
 
     //Returns publicKey Byte Array
     Waves.getPublicKey = function(secretPhrase)
