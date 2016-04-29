@@ -1,5 +1,5 @@
 /**
- * @depends {nrs.js}
+ * @depends {waves.js}
  */
 var Waves = (function (Waves, $, undefined) {
 
