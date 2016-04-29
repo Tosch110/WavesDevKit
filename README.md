@@ -1,3 +1,7 @@
+# Testnet
+
+Waves blockchain, waves UI and DevKit remain in testnet mode. Until release API and crypto technologies might change drastically.
+
 # WavesDevKit for Javascript
 Javascript development framework for Waves. Create transactions with Javascript, get the most used and needed Waves functions. 
 
