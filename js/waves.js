@@ -56,62 +56,8 @@ var Waves = (function(Waves, $, undefined) {
 
     }
 
-
-
-	$(document).ready(function() {
-
-        Waves.seed = 'PrivateKeyString';
-
-        Waves.address = 'o1y1pkQyXCDWrtNQZ9K4u6KW1RiFZTnJ1';
-
-        var addressBalance = Waves.getAddressesBalance(Waves.address, function (balance) {
-            console.log(balance);
-
-            $("#balance").html('Address: '+Waves.address+' with a Balance of: '+Waves.format(balance.balance)+' Waves');
-        });
-        
-
-        //Get seedArrayBytes
-        //var seedArrayBytes = converters.stringToByteArray(Waves.seed);
-        
-        $("#secret").html(Waves.seed);
-
-        var publicKey = Waves.getPublicKey(Waves.seed);
-        //console.log(publicBytes);
-        //var base58publicKey = Waves.to_b58(publicBytes,'123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
-
-        $("#publicKey").html(publicKey);
-
-        var privateKey = Waves.getPrivateKey(Waves.seed);
-        //console.log(privateBytes);
-
-        $("#privateKey").html(privateKey);
-
-        //address generation
-		
-
-
-        $.getJSON(Waves.server+'/blocks/last', function(response) {
-            
-            var thisTime = (response.timestamp / 10000000) + Waves.epoch;
-
-            $('#mydiv').html('Last Waves Block: '+ Waves.formatTimestamp( response.timestamp ));
-
-            
-
-        });
-        
-	});
-
-
 	return Waves;
 }(Waves || {}, jQuery));
-
-/*
-$(document).ready(function() {
-	//Waves.init();
-});
-*/
 
 function _checkDOMenabled() {
     var storage;

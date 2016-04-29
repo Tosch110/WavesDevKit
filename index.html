@@ -69,6 +69,59 @@
 	<script src="js/waves.js" type="text/javascript"></script>
     <script src="js/waves.constants.js" type="text/javascript"></script>
     <script src="js/waves.util.js" type="text/javascript"></script>
+
+
+    <script>
+
+    $(document).ready(function() {
+
+        Waves.seed = 'PrivateKeyString';
+
+        Waves.address = 'o1y1pkQyXCDWrtNQZ9K4u6KW1RiFZTnJ1';
+
+        var addressBalance = Waves.getAddressesBalance(Waves.address, function (balance) {
+            console.log(balance);
+
+            $("#balance").html('Address: '+Waves.address+' with a Balance of: '+Waves.format(balance.balance)+' Waves');
+        });
+        
+
+        //Get seedArrayBytes
+        //var seedArrayBytes = converters.stringToByteArray(Waves.seed);
+        
+        $("#secret").html(Waves.seed);
+
+        var publicKey = Waves.getPublicKey(Waves.seed);
+        //console.log(publicBytes);
+        //var base58publicKey = Waves.to_b58(publicBytes,'123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz');
+
+        $("#publicKey").html(publicKey);
+
+        var privateKey = Waves.getPrivateKey(Waves.seed);
+        //console.log(privateBytes);
+
+        $("#privateKey").html(privateKey);
+
+        //address generation
+        
+
+
+        $.getJSON(Waves.server+'/blocks/last', function(response) {
+            
+            var thisTime = (response.timestamp / 10000000) + Waves.epoch;
+
+            $('#mydiv').html('Last Waves Block: '+ Waves.formatTimestamp( response.timestamp ));
+
+            
+
+        });
+        
+    });
+
+
+
+
+    </script>
     <!--
     //Transaction Format
     {
